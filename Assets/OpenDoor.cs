@@ -8,6 +8,7 @@ public class OpenDoor : MonoBehaviour
     public GameObject pos2;
     public int velo = 20;
    
+   
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))

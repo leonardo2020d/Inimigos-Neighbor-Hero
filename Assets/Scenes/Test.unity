@@ -1359,6 +1359,30 @@ Transform:
   m_Father: {fileID: 1582823869}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: -1.649, z: 0}
+--- !u!1 &481935346 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1787251352930042134, guid: 58f9182d88593164ab5484720cada575, type: 3}
+  m_PrefabInstance: {fileID: 191050756}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &481935350
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481935346}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9ebd30d1f61c55748a6e72297201d59d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &511993972
 GameObject:
   m_ObjectHideFlags: 0
@@ -3642,7 +3666,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3045380534531632129, guid: 5d98ae1d73932f44a9b134ae8af4ddea, type: 3}
       propertyPath: m_Name
-      value: PlayerArmature Variant
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 3045380534531632129, guid: 5d98ae1d73932f44a9b134ae8af4ddea, type: 3}
       propertyPath: m_Layer

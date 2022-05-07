@@ -16,7 +16,6 @@ public class IA : MonoBehaviour
     public float velocidadedeperseguicao = 6;
     public float tempoAtaque = 1.5f;
     public float dano = 40;
-   public bool vendoPlayer;
     public Transform[] aiPoints;
     private int aiPointAtual;
     private bool estaSeguindo;
@@ -36,25 +35,8 @@ public class IA : MonoBehaviour
         distanciaPlayer = Vector3.Distance(player.transform.position,transform.position);
         distanciaAIpoint = Vector3.Distance(aiPoints[aiPointAtual].transform.position, transform.position);
 
-        RaycastHit hit;
-        Vector3 deonde = transform.position;
-        Vector3 paraonde = player.transform.position;
-        Vector3 direcao = deonde-paraonde;
+     
 
-        if(Physics.Raycast(transform.position,direcao,out hit, 1000) && distanciaPlayer < distanciaPercepcao)
-        {
-            
-            if (hit.collider.gameObject.tag=="Player")
-            {
-                
-                vendoPlayer = true;
-            }
-            else
-            {
-                vendoPlayer = false;
-            }
-
-        }
 
         if (distanciaPlayer > distanciaPercepcao)
         {
@@ -62,26 +44,13 @@ public class IA : MonoBehaviour
         }
         if (distanciaPlayer <= distanciaPercepcao && distanciaPlayer > distanciadeSeguir)
         {
-            if (vendoPlayer==true)
-            {
                 Olhar();
-            }
-            else
-            {
-                Passear();
-            }
         }
         if (distanciaPlayer <= distanciadeSeguir && distanciaPlayer > distanciadeatacar)
         {
-            if (vendoPlayer == true)
-            {
                 Seguir();
                 estaSeguindo =true;
-            }
-            else
-            {
-                Passear();
-            }
+           
         }
         if (distanciaPlayer <= distanciadeatacar)
         {
@@ -98,7 +67,7 @@ public class IA : MonoBehaviour
         {
             cronometroSeguindo += Time.deltaTime;
         }
-        if (cronometroSeguindo >= 5 && vendoPlayer == false)
+        if (cronometroSeguindo >= 5 )
         {
             contadorSeguindo = false;
             cronometroSeguindo = 0;

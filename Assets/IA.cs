@@ -19,9 +19,8 @@ public class IA : MonoBehaviour
     public Transform[] aiPoints;
     private int aiPointAtual;
     private bool estaSeguindo;
-    private bool contadorSeguindo;
     private bool atacando;
-    private float cronometroSeguindo;
+
     private float cronometroAtaque;
 
     void Start()
@@ -32,7 +31,9 @@ public class IA : MonoBehaviour
    
     void Update()
     {
+        //Pega a distancia do player em relação a IA
         distanciaPlayer = Vector3.Distance(player.transform.position,transform.position);
+        //pega a distancia do Ai Point atual em relação a IA
         distanciaAIpoint = Vector3.Distance(aiPoints[aiPointAtual].transform.position, transform.position);
 
      
@@ -59,28 +60,22 @@ public class IA : MonoBehaviour
 
         if (distanciaAIpoint <= 2)
         {
+            // escolhe outro AI point aleatório para o player seguir 
             aiPointAtual = Random.Range(0, aiPoints.Length);
             Passear();
         }
 
-        if (contadorSeguindo == true)
-        {
-            cronometroSeguindo += Time.deltaTime;
-        }
-        if (cronometroSeguindo >= 5 )
-        {
-            contadorSeguindo = false;
-            cronometroSeguindo = 0;
-            estaSeguindo = false;
-        }
+       
 
         if (atacando == true)
         {
+            //inicia o contador para que n fique atacando toda hora
             cronometroAtaque += Time.deltaTime;
 
         }
         if (cronometroAtaque >= tempoAtaque && distanciaPlayer <= distanciadeatacar)
         {
+            // zera o cronometro para que o inimogo possa atacar dnv
             atacando = true;
             cronometroAtaque = 0;
             VidaPlayer.vida = VidaPlayer.vida - dano;
@@ -88,6 +83,7 @@ public class IA : MonoBehaviour
         }
        else if (cronometroAtaque >= tempoAtaque && distanciaPlayer > distanciadeatacar)
         {
+            
             atacando = false;
             cronometroAtaque = 0;
             print("Errou");
@@ -104,10 +100,7 @@ public class IA : MonoBehaviour
             nav.destination = aiPoints[aiPointAtual].transform.position;
 
         }
-        else if (estaSeguindo==true)
-        {
-            contadorSeguindo = true;
-        }
+       
     }
     void Olhar()
     {
